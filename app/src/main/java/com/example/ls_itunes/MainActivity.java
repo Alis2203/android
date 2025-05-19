@@ -32,22 +32,21 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
+                    int itemId = item.getItemId(); // Get the item ID
 
-                    switch (item.getItemId()) {
-                        case R.id.nav_search:
-                            selectedFragment = new SearchFragment();
-                            break;
-                        case R.id.nav_guess:
-                            selectedFragment = new GuessFragment();
-                            break;
-                        case R.id.nav_favorites:
-                            selectedFragment = new FavoritesFragment();
-                            break;
+                    if (itemId == R.id.nav_search) {
+                        selectedFragment = new SearchFragment();
+                    } else if (itemId == R.id.nav_guess) {
+                        selectedFragment = new GuessFragment();
+                    } else if (itemId == R.id.nav_favorites) {
+                        selectedFragment = new FavoritesFragment();
                     }
 
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_container, selectedFragment)
-                            .commit();
+                    if (selectedFragment != null) { // Check if a fragment was selected
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.fragment_container, selectedFragment)
+                                .commit();
+                    }
 
                     return true;
                 }

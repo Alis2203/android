@@ -7,6 +7,14 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.appcompat.widget.SearchView;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.Call;
+import retrofit2.Callback; // You'll also need this for your anonymous inner class
+import retrofit2.Response; // And this one for the onResponse method
+import java.util.List;     // For List<Song>
+import android.widget.Toast; // For Toast messages
 
 public class SearchFragment extends Fragment {
     private RecyclerView recyclerView;
@@ -19,7 +27,7 @@ public class SearchFragment extends Fragment {
         recyclerView = view.findViewById(R.id.songs_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        SearchView searchView = view.findViewById(R.id.search_view);
+        SearchView searchView = view.findViewById(R.id.my_search_view);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
