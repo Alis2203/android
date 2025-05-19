@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.ls_itunes.fragment.FavoritesFragment;
+import com.example.ls_itunes.fragment.GuessFragment;
+import com.example.ls_itunes.fragment.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 

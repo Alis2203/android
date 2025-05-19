@@ -1,4 +1,4 @@
-package com.example.ls_itunes;
+package com.example.ls_itunes.fragment;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -12,6 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.room.Room;
+
+import com.example.ls_itunes.AppDatabase;
+import com.example.ls_itunes.FavoriteSong;
+import com.example.ls_itunes.R;
 import com.squareup.picasso.Picasso;
 import java.util.Collections;
 import java.util.List;
