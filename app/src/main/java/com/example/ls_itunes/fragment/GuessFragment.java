@@ -1,4 +1,4 @@
-package com.example.ls_itunes.fragment;
+package com.example.ls_itunes;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -12,10 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.room.Room;
-
-import com.example.ls_itunes.AppDatabase;
-import com.example.ls_itunes.FavoriteSong;
-import com.example.ls_itunes.R;
 import com.squareup.picasso.Picasso;
 import java.util.Collections;
 import java.util.List;
@@ -104,20 +100,29 @@ public class GuessFragment extends Fragment {
         }
 
         attempts++;
+
         if (userGuess.equalsIgnoreCase(currentSong.getTrackName())) {
             score++;
             textFeedback.setText("✅ Correcte! És: " + currentSong.getTrackName());
-            nextSong();
+
+            if (score >= 3) {
+                textFeedback.append("\n🎉 Has encertat 3 cançons! Fi del joc.");
+                buttonPlay.setEnabled(false);
+                buttonCheck.setEnabled(false);
+                if (mediaPlayer != null) mediaPlayer.stop();
+            } else {
+                currentIndex = (currentIndex + 1) % songs.size();
+                playCurrentSong();  // Reproduce la siguiente canción automáticamente
+            }
+
         } else if (attempts >= 3) {
             textFeedback.setText("❌ Has fallat. Era: " + currentSong.getTrackName());
-            nextSong();
+            currentIndex = (currentIndex + 1) % songs.size();
+            playCurrentSong();
         } else {
             textFeedback.setText("❌ Incorrecte. Intents: " + attempts + "/3");
         }
-    }
 
-    private void nextSong() {
-        currentIndex = (currentIndex + 1) % songs.size();
         updateUI();
     }
 
