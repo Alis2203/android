@@ -1,4 +1,4 @@
-package com.example.ls_itunes;
+package com.example.ls_itunes.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.ls_itunes.R;
+import com.example.ls_itunes.Song;
+import com.example.ls_itunes.SongDetailActivity;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 import android.content.Intent;

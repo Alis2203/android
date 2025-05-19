@@ -1,4 +1,4 @@
-package com.example.ls_itunes;
+package com.example.ls_itunes.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +15,12 @@ import retrofit2.Callback; // You'll also need this for your anonymous inner cla
 import retrofit2.Response; // And this one for the onResponse method
 import java.util.List;     // For List<Song>
 import android.widget.Toast; // For Toast messages
+
+import com.example.ls_itunes.ITunesResponse;
+import com.example.ls_itunes.ITunesService;
+import com.example.ls_itunes.R;
+import com.example.ls_itunes.Song;
+import com.example.ls_itunes.adapter.SongAdapter;
 
 public class SearchFragment extends Fragment {
     private RecyclerView recyclerView;

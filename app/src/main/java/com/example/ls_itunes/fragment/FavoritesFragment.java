@@ -1,4 +1,4 @@
-package com.example.ls_itunes;  // Paquete corregido
+package com.example.ls_itunes.fragment;  // Paquete corregido
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
+
+import com.example.ls_itunes.AppDatabase;
+import com.example.ls_itunes.adapter.FavoriteAdapter;
+import com.example.ls_itunes.FavoriteSong;
+import com.example.ls_itunes.R;
+
 import java.util.List;
 
 public class FavoritesFragment extends Fragment {
