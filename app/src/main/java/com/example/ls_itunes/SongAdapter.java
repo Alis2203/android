@@ -41,7 +41,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
         // Cargar imagen con Picasso
         Picasso.get()
                 .load(song.getArtworkUrl100())
-                .placeholder(R.drawable.ic_music) // Imagen por defecto
+                .placeholder(R.drawable.ic_music) // Imagen por defecto.
                 .into(holder.imageArtwork);
     }
 
