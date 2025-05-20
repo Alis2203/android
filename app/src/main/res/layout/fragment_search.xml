@@ -26,7 +26,7 @@
 
     <Button
         android:id="@+id/see_all_songs"
-        android:layout_width="wrap_content"
+        android:layout_width="291dp"
         android:layout_height="wrap_content"
-        android:text="Veure totes les cançons"/>
+        android:text="Veure totes les cançons" />
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.example.ls_itunes;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.room.Room;
+import com.example.ls_itunes.fragment.SearchFragment;
 import com.squareup.picasso.Picasso;
 import java.util.Collections;
 import java.util.List;
@@ -106,13 +108,22 @@ public class GuessFragment extends Fragment {
             textFeedback.setText("✅ Correcte! És: " + currentSong.getTrackName());
 
             if (score >= 3) {
-                textFeedback.append("\n🎉 Has encertat 3 cançons! Fi del joc.");
+                textFeedback.append("\n🎉 Has encertat 3 cançons! Tornant al menú...");
                 buttonPlay.setEnabled(false);
                 buttonCheck.setEnabled(false);
                 if (mediaPlayer != null) mediaPlayer.stop();
+
+                new Handler().postDelayed(() -> {
+                    requireActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, new SearchFragment())
+                            .commit();
+                }, 2000);
             } else {
-                currentIndex = (currentIndex + 1) % songs.size();
-                playCurrentSong();  // Reproduce la siguiente canción automáticamente
+                // Esperar 1 segon abans de passar a la següent cançó
+                new Handler().postDelayed(() -> {
+                    currentIndex = (currentIndex + 1) % songs.size();
+                    playCurrentSong(); // Reproduce la següent automàticament
+                }, 1000);
             }
 
         } else if (attempts >= 3) {

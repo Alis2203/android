@@ -57,7 +57,7 @@ public class SearchFragment extends Fragment {
                 .build();
 
         ITunesService service = retrofit.create(ITunesService.class);
-        Call<ITunesResponse> call = service.searchSongs(term, "music", "musicTrack", 15);
+        Call<ITunesResponse> call = service.searchSongs(term, "music", "musicTrack", 50);
 
         call.enqueue(new Callback<ITunesResponse>() {
             @Override
