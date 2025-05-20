@@ -64,7 +64,7 @@ public class GuessFragment extends Fragment {
 
     private void playCurrentSong() {
         if (songs.isEmpty()) {
-            Toast.makeText(getContext(), "No tens cançons favorites!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.no_favorite_songs), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -85,19 +85,19 @@ public class GuessFragment extends Fragment {
                 attempts = 0;
             });
         } catch (Exception e) {
-            Toast.makeText(getContext(), "Error al reproduir", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.error_playback), Toast.LENGTH_SHORT).show();
         }
     }
 
     private void checkAnswer() {
         if (currentSong == null) {
-            Toast.makeText(getContext(), "Prem ▶ primer", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.press_play_first), Toast.LENGTH_SHORT).show();
             return;
         }
 
         String userGuess = editGuess.getText().toString().trim();
         if (userGuess.isEmpty()) {
-            textFeedback.setText("Escriu el nom de la cançó!");
+            textFeedback.setText(getString(R.string.enter_song_name));
             return;
         }
 
@@ -105,10 +105,10 @@ public class GuessFragment extends Fragment {
 
         if (userGuess.equalsIgnoreCase(currentSong.getTrackName())) {
             score++;
-            textFeedback.setText("✅ Correcte! És: " + currentSong.getTrackName());
+            textFeedback.setText(getString(R.string.correct_answer_prefix) + currentSong.getTrackName());
 
             if (score >= 3) {
-                textFeedback.append("\n🎉 Has encertat 3 cançons! Tornant al menú...");
+                textFeedback.append("\n" + getString(R.string.win_message));
                 buttonPlay.setEnabled(false);
                 buttonCheck.setEnabled(false);
                 if (mediaPlayer != null) mediaPlayer.stop();
@@ -119,19 +119,18 @@ public class GuessFragment extends Fragment {
                             .commit();
                 }, 2000);
             } else {
-                // Esperar 1 segon abans de passar a la següent cançó
                 new Handler().postDelayed(() -> {
                     currentIndex = (currentIndex + 1) % songs.size();
-                    playCurrentSong(); // Reproduce la següent automàticament
+                    playCurrentSong();
                 }, 1000);
             }
 
         } else if (attempts >= 3) {
-            textFeedback.setText("❌ Has fallat. Era: " + currentSong.getTrackName());
+            textFeedback.setText(getString(R.string.wrong_answer_prefix) + currentSong.getTrackName());
             currentIndex = (currentIndex + 1) % songs.size();
             playCurrentSong();
         } else {
-            textFeedback.setText("❌ Incorrecte. Intents: " + attempts + "/3");
+            textFeedback.setText(getString(R.string.attempts_prefix) + attempts + "/3");
         }
 
         updateUI();
@@ -139,7 +138,7 @@ public class GuessFragment extends Fragment {
 
     private void updateUI() {
         if (!songs.isEmpty()) {
-            textScore.setText("Cançons encertades: " + score + "/" + songs.size());
+            textScore.setText(getString(R.string.score_prefix) + score + "/" + songs.size());
         }
     }
 

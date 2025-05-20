@@ -1,13 +1,27 @@
 <resources>
     <string name="app_name">ls_itunes</string>
     <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
+
+    <!-- Navigation Fragment Labels -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+
+    <!-- GuessFragment Strings -->
     <string name="play">Reproduir</string>
     <string name="check">Comprovar</string>
+    <string name="no_favorite_songs">No tens cançons favorites!</string>
+    <string name="error_playback">Error al reproduir</string>
+    <string name="press_play_first">Prem ▶ primer</string>
+    <string name="enter_song_name">Escriu el nom de la cançó!</string>
+    <string name="correct_answer_prefix">✅ Correcte! És: </string>
+    <string name="win_message">🎉 Has encertat 3 cançons! Tornant al menú...</string>
+    <string name="wrong_answer_prefix">❌ Has fallat. Era: </string>
+    <string name="attempts_prefix">❌ Incorrecte. Intents: </string>
+    <string name="score_prefix">Cançons encertades: </string>
+
+
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
