@@ -11,9 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
-
-// Importa Glide si lo vas a usar para cargar imágenes
-// import com.bumptech.glide.Glide;
+import com.bumptech.glide.Glide;
 
 public class SongDetailActivity extends AppCompatActivity {
     private static final String TAG = "SongDetailActivity";
@@ -117,20 +115,15 @@ public class SongDetailActivity extends AppCompatActivity {
         textViewGenre.setText(currentSong.getPrimaryGenreName() != null ? currentSong.getPrimaryGenreName() : "N/A");
 
 
-        // Cargar imagen de la carátula (ejemplo con Glide, necesitarás la dependencia)
-        // if (currentSong.getArtworkUrl100() != null && !currentSong.getArtworkUrl100().isEmpty()) {
-        //     Glide.with(this)
-        //          .load(currentSong.getArtworkUrl100())
-        //          .placeholder(R.drawable.ic_music) // Usa tu placeholder
-        //          .error(R.drawable.ic_music) // Una imagen de error si falla la carga
-        //          .into(imageViewArtwork);
-        // } else {
-        //     imageViewArtwork.setImageResource(R.drawable.ic_music); // Imagen por defecto si no hay URL
-        // }
-        // Si no usas Glide, al menos asegúrate de que el placeholder se muestre
-        imageViewArtwork.setImageResource(R.drawable.ic_music); // Puedes cambiar esto si usas Glide
-
-
+        if (currentSong.getArtworkUrl100() != null && !currentSong.getArtworkUrl100().isEmpty()) {
+            Glide.with(this)
+                    .load(currentSong.getArtworkUrl100())
+                    .placeholder(R.drawable.ic_music)
+                    .error(R.drawable.ic_music)
+                    .into(imageViewArtwork);
+        } else {
+            imageViewArtwork.setImageResource(R.drawable.ic_music);
+        }
         // Habilitar o deshabilitar el botón de preview
         buttonPlayPreview.setEnabled(currentSong.getPreviewUrl() != null && !currentSong.getPreviewUrl().isEmpty());
     }

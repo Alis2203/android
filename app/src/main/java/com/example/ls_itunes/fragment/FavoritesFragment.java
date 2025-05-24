@@ -34,7 +34,7 @@ public class FavoritesFragment extends Fragment {
         ).allowMainThreadQueries().build();  // ⚠️ Usa corrutinas en producción
 
         List<FavoriteSong> favorites = db.favoriteDao().getAll();
-        adapter = new FavoriteAdapter(favorites);
+        adapter = new FavoriteAdapter(favorites, requireContext());
         recyclerView.setAdapter(adapter);
 
         return view;

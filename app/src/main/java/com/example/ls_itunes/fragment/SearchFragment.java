@@ -1,26 +1,28 @@
 package com.example.ls_itunes.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import android.widget.Button;
+import android.widget.Toast;
 import androidx.appcompat.widget.SearchView;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.Call;
-import retrofit2.Callback; // You'll also need this for your anonymous inner class
-import retrofit2.Response; // And this one for the onResponse method
-import java.util.List;     // For List<Song>
-import android.widget.Toast; // For Toast messages
-
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.ls_itunes.AllSongsActivity;
 import com.example.ls_itunes.ITunesResponse;
 import com.example.ls_itunes.ITunesService;
 import com.example.ls_itunes.R;
 import com.example.ls_itunes.Song;
 import com.example.ls_itunes.adapter.SongAdapter;
+import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SearchFragment extends Fragment {
     private RecyclerView recyclerView;
@@ -44,6 +46,18 @@ public class SearchFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
                 return false;
+            }
+        });
+
+        Button btnAllSongs = view.findViewById(R.id.button_all_songs);
+        btnAllSongs.setOnClickListener(v -> {
+            String query = searchView.getQuery().toString().trim();
+            if (!query.isEmpty()) {
+                Intent intent = new Intent(requireContext(), AllSongsActivity.class);
+                intent.putExtra("search_term", query);
+                startActivity(intent);
+            } else {
+                Toast.makeText(getContext(), "Introdueix un terme de cerca.", Toast.LENGTH_SHORT).show();
             }
         });
 

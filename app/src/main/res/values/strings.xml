@@ -7,6 +7,10 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="view_all_songs">Veure totes les cançons</string>
+    <string name="all_songs_title">Totes les cançons</string>
+
+
 
     <!-- GuessFragment Strings -->
     <string name="play">Reproduir</string>

@@ -9,24 +9,28 @@
     <androidx.appcompat.widget.SearchView
         android:id="@+id/my_search_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
+        android:layout_height="wrap_content" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cançons"
         android:textSize="18sp"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/songs_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <Button
-        android:id="@+id/see_all_songs"
-        android:layout_width="291dp"
+        android:id="@+id/button_all_songs"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Veure totes les cançons" />
+        android:text="@string/view_all_songs"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"/>
 </LinearLayout>
