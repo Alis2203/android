@@ -1,3 +1,4 @@
+// SearchFragment.java
 package com.example.ls_itunes.fragment;
 
 import android.content.Intent;
@@ -106,11 +107,11 @@ public class SearchFragment extends Fragment {
                 .build();
 
         ITunesService service = retrofit.create(ITunesService.class);
-        Call<ITunesResponse> call = service.searchSongs(term, "music", "musicTrack", 50);
+        Call<ITunesResponse<Song>> call = service.searchSongs(term, "music", "musicTrack", 50);
 
-        call.enqueue(new Callback<ITunesResponse>() {
+        call.enqueue(new Callback<ITunesResponse<Song>>() {
             @Override
-            public void onResponse(Call<ITunesResponse> call, Response<ITunesResponse> response) {
+            public void onResponse(Call<ITunesResponse<Song>> call, Response<ITunesResponse<Song>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     songsList.clear();
                     songsList.addAll(response.body().getResults());
@@ -119,7 +120,7 @@ public class SearchFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ITunesResponse> call, Throwable t) {
+            public void onFailure(Call<ITunesResponse<Song>> call, Throwable t) {
                 Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -132,20 +133,20 @@ public class SearchFragment extends Fragment {
                 .build();
 
         ITunesService service = retrofit.create(ITunesService.class);
-        Call<ITunesResponse> call = service.searchAlbums(term, "music", "album", 20);
+        Call<ITunesResponse<Album>> call = service.searchAlbums(term, "music", "album", 20);
 
-        call.enqueue(new Callback<ITunesResponse>() {
+        call.enqueue(new Callback<ITunesResponse<Album>>() {
             @Override
-            public void onResponse(Call<ITunesResponse> call, Response<ITunesResponse> response) {
+            public void onResponse(Call<ITunesResponse<Album>> call, Response<ITunesResponse<Album>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     albumList.clear();
-                    albumList.addAll(response.body().getAlbums());
+                    albumList.addAll(response.body().getResults());
                     albumAdapter.notifyDataSetChanged();
                 }
             }
 
             @Override
-            public void onFailure(Call<ITunesResponse> call, Throwable t) {
+            public void onFailure(Call<ITunesResponse<Album>> call, Throwable t) {
                 Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

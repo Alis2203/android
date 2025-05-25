@@ -2,66 +2,40 @@ package com.example.ls_itunes;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import com.google.gson.annotations.SerializedName;
 
-public class Song implements Parcelable {
+public  class Song implements Parcelable {
+    @SerializedName("trackName")
     private String trackName;
+
+    @SerializedName("artistName")
     private String artistName;
+
+    @SerializedName("collectionName")
     private String collectionName;
+
+    @SerializedName("collectionType")
+    private String collectionType;
+
+    @SerializedName("artworkUrl100")
     private String artworkUrl100;
+
+    @SerializedName("previewUrl")
     private String previewUrl;
+
+    @SerializedName("primaryGenreName")
     private String primaryGenreName;
-    private double trackPrice;
+
+    @SerializedName("releaseDate")
     private String releaseDate;
 
+    @SerializedName("trackPrice")
+    private double trackPrice;
 
-    public Song() {
-    }
+    // Constructor vacío (requerido por GSON)
+    public Song() {}
 
-
-    public Song(String trackName, String artistName, String collectionName, String artworkUrl100, String previewUrl, String primaryGenreName, double trackPrice, String releaseDate) {
-        this.trackName = trackName;
-        this.artistName = artistName;
-        this.collectionName = collectionName;
-        this.artworkUrl100 = artworkUrl100;
-        this.previewUrl = previewUrl;
-        this.primaryGenreName = primaryGenreName;
-        this.trackPrice = trackPrice;
-        this.releaseDate = releaseDate;
-    }
-
-    // --- GETTERS ---
-    public String getTrackName() {
-        return trackName;
-    }
-
-    public String getArtistName() {
-        return artistName;
-    }
-
-    public String getCollectionName() {
-        return collectionName;
-    }
-
-    public String getArtworkUrl100() {
-        return artworkUrl100;
-    }
-
-    public String getPreviewUrl() {
-        return previewUrl;
-    }
-
-    public String getPrimaryGenreName() {
-        return primaryGenreName;
-    }
-
-    public double getTrackPrice() {
-        return trackPrice;
-    }
-
-    public String getReleaseDate() {
-        return releaseDate;
-    }
-
+    // Setters
     public void setTrackName(String trackName) {
         this.trackName = trackName;
     }
@@ -72,6 +46,10 @@ public class Song implements Parcelable {
 
     public void setCollectionName(String collectionName) {
         this.collectionName = collectionName;
+    }
+
+    public void setCollectionType(String collectionType) {
+        this.collectionType = collectionType;
     }
 
     public void setArtworkUrl100(String artworkUrl100) {
@@ -86,42 +64,64 @@ public class Song implements Parcelable {
         this.primaryGenreName = primaryGenreName;
     }
 
-    public void setTrackPrice(double trackPrice) {
-        this.trackPrice = trackPrice;
-    }
-
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
+    public void setTrackPrice(double trackPrice) {
+        this.trackPrice = trackPrice;
+    }
 
+    // Getters
+    public String getTrackName() {
+        return trackName;
+    }
+
+    public String getArtistName() {
+        return artistName;
+    }
+
+    public String getCollectionName() {
+        return collectionName;
+    }
+
+    public String getCollectionType() {
+        return collectionType;
+    }
+
+    public String getArtworkUrl100() {
+        return artworkUrl100;
+    }
+
+    public String getPreviewUrl() {
+        return previewUrl;
+    }
+
+    public String getPrimaryGenreName() {
+        return primaryGenreName;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public double getTrackPrice() {
+        return trackPrice;
+    }
+
+    // Parcelable
     protected Song(Parcel in) {
         trackName = in.readString();
         artistName = in.readString();
         collectionName = in.readString();
+        collectionType = in.readString();
         artworkUrl100 = in.readString();
         previewUrl = in.readString();
         primaryGenreName = in.readString();
-        trackPrice = in.readDouble();
         releaseDate = in.readString();
+        trackPrice = in.readDouble();
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(trackName);
-        dest.writeString(artistName);
-        dest.writeString(collectionName);
-        dest.writeString(artworkUrl100);
-        dest.writeString(previewUrl);
-        dest.writeString(primaryGenreName);
-        dest.writeDouble(trackPrice);
-        dest.writeString(releaseDate);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
     public static final Creator<Song> CREATOR = new Creator<Song>() {
         @Override
         public Song createFromParcel(Parcel in) {
@@ -133,4 +133,24 @@ public class Song implements Parcelable {
             return new Song[size];
         }
     };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int flags) {
+        parcel.writeString(trackName);
+        parcel.writeString(artistName);
+        parcel.writeString(collectionName);
+        parcel.writeString(collectionType);
+        parcel.writeString(artworkUrl100);
+        parcel.writeString(previewUrl);
+        parcel.writeString(primaryGenreName);
+        parcel.writeString(releaseDate);
+        parcel.writeDouble(trackPrice);
+    }
+
 }
+

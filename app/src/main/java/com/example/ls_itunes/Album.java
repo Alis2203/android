@@ -1,31 +1,56 @@
 package com.example.ls_itunes;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Album {
-    private String collectionName;
-    private String artistName;
-    private double collectionPrice;
-    private String artworkUrl100;
 
-    public Album(String collectionName, String artistName, double collectionPrice, String artworkUrl100) {
-        this.collectionName = collectionName;
-        this.artistName = artistName;
-        this.collectionPrice = collectionPrice;
-        this.artworkUrl100 = artworkUrl100;
+    @SerializedName("collectionName")
+    private String title;
+    @SerializedName("collectionId")
+    private int collectionId;
+
+    public int getCollectionId() {
+        return collectionId;
     }
 
-    public String getCollectionName() {
-        return collectionName;
+    @SerializedName("artistName")
+    private String artist;
+
+    @SerializedName("artworkUrl100")
+    private String imageUrl;
+
+    public Album() {
     }
 
-    public String getArtistName() {
-        return artistName;
+    public Album(String title, String artist, String imageUrl) {
+        this.title = title;
+        this.artist = artist;
+        this.imageUrl = imageUrl;
     }
 
-    public double getCollectionPrice() {
-        return collectionPrice;
+    // Getters
+    public String getTitle() {
+        return title;
     }
 
-    public String getArtworkUrl100() {
-        return artworkUrl100;
+    public String getArtist() {
+        return artist;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    // Setters
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

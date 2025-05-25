@@ -12,6 +12,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 import com.bumptech.glide.Glide;
+import com.example.ls_itunes.Song;
+
+
 
 public class SongDetailActivity extends AppCompatActivity {
     private static final String TAG = "SongDetailActivity";

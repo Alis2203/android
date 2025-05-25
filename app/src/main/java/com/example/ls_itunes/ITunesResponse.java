@@ -1,26 +1,21 @@
 package com.example.ls_itunes;
 
-
-
+import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
-public class ITunesResponse {
-    private List<Song> results;
-    private List<Album> albums;
+public class ITunesResponse<T> {
 
-    public List<Song> getResults() {
+    @SerializedName("resultCount")
+    private int resultCount;
+
+    @SerializedName("results")
+    private List<T> results;
+
+    public int getResultCount() {
+        return resultCount;
+    }
+
+    public List<T> getResults() {
         return results;
-    }
-
-    public void setResults(List<Song> results) {
-        this.results = results;
-    }
-
-    public List<Album> getAlbums() {
-        return albums;
-    }
-
-    public void setAlbums(List<Album> albums) {
-        this.albums = albums;
     }
 }
