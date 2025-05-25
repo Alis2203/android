@@ -12,4 +12,11 @@ public interface ITunesService {
             @Query("entity") String entity,
             @Query("limit") int limit
     );
+    @GET("search")
+    Call<ITunesResponse> searchAlbums(
+            @Query("term") String term,
+            @Query("media") String media,
+            @Query("entity") String entity,
+            @Query("limit") int limit
+    );
 }

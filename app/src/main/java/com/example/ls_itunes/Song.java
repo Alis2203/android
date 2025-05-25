@@ -3,24 +3,21 @@ package com.example.ls_itunes;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Song implements Parcelable { // <-- Implement Parcelable here
-    // These are example fields. Adjust them based on the actual data
-    // you get from the iTunes API for a song.
+public class Song implements Parcelable {
     private String trackName;
     private String artistName;
-    private String collectionName; // Album name
-    private String artworkUrl100;  // URL for album artwork (100x100)
-    private String previewUrl;     // URL for a song preview
+    private String collectionName;
+    private String artworkUrl100;
+    private String previewUrl;
     private String primaryGenreName;
     private double trackPrice;
     private String releaseDate;
 
-    // It's good practice to have a constructor, especially if you use libraries like Gson
-    // For Gson, a no-argument constructor is often needed, or it can use setters.
+
     public Song() {
     }
 
-    // You can also have a constructor to initialize all fields
+
     public Song(String trackName, String artistName, String collectionName, String artworkUrl100, String previewUrl, String primaryGenreName, double trackPrice, String releaseDate) {
         this.trackName = trackName;
         this.artistName = artistName;
@@ -65,7 +62,6 @@ public class Song implements Parcelable { // <-- Implement Parcelable here
         return releaseDate;
     }
 
-    // --- SETTERS (optional, but often needed for libraries like Gson) ---
     public void setTrackName(String trackName) {
         this.trackName = trackName;
     }
@@ -98,7 +94,7 @@ public class Song implements Parcelable { // <-- Implement Parcelable here
         this.releaseDate = releaseDate;
     }
 
-    // --- Parcelable Implementation ---
+
     protected Song(Parcel in) {
         trackName = in.readString();
         artistName = in.readString();
@@ -124,9 +120,8 @@ public class Song implements Parcelable { // <-- Implement Parcelable here
 
     @Override
     public int describeContents() {
-        return 0; // Usually 0 unless you have FileDescriptors
+        return 0;
     }
-
     public static final Creator<Song> CREATOR = new Creator<Song>() {
         @Override
         public Song createFromParcel(Parcel in) {

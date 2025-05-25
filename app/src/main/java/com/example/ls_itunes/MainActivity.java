@@ -20,11 +20,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Configurar Bottom Navigation
+
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        // Cargar el fragmento de "Cerca" por defecto
+
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, new SearchFragment())
                 .commit();
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                         selectedFragment = new FavoritesFragment();
                     }
 
-                    if (selectedFragment != null) { // Check if a fragment was selected
+                    if (selectedFragment != null) {
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.fragment_container, selectedFragment)
                                 .commit();

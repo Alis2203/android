@@ -21,6 +21,7 @@
             android:id="@+id/text_song_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/song_name"
             android:textSize="24sp"
             android:layout_marginTop="16dp"/>
 
@@ -28,6 +29,7 @@
             android:id="@+id/text_artist_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/artist_name"
             android:textSize="18sp"
             android:textColor="#666"/>
 
@@ -35,34 +37,39 @@
             android:id="@+id/text_album_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/album_name"
             android:layout_marginTop="8dp"/>
 
         <TextView
             android:id="@+id/text_release_date"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/release_date"/>
 
         <TextView
             android:id="@+id/text_price"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/price"/>
 
         <TextView
             android:id="@+id/text_genre"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/genre"/>
 
         <Button
             android:id="@+id/button_play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Play Preview"
+            android:text="@string/play_preview"
             android:layout_marginTop="16dp"/>
+
         <Button
             android:id="@+id/button_add_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Añadir a Favoritos"
+            android:text="@string/add_to_favorites"
             android:layout_marginTop="16dp"/>
 
     </LinearLayout>

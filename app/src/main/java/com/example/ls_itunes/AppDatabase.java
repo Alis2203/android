@@ -17,7 +17,7 @@ public abstract class AppDatabase extends RoomDatabase {
                     context.getApplicationContext(),
                     AppDatabase.class,
                     "favorites-db"
-            ).allowMainThreadQueries().build(); // ⚠️ Solo para desarrollo
+            ).allowMainThreadQueries().build();
         }
         return INSTANCE;
     }

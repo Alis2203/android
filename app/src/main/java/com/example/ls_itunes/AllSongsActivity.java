@@ -41,7 +41,7 @@ public class AllSongsActivity extends AppCompatActivity {
                 .build();
 
         ITunesService service = retrofit.create(ITunesService.class);
-        Call<ITunesResponse> call = service.searchSongs(term, "music", "musicTrack", 100); // más resultados
+        Call<ITunesResponse> call = service.searchSongs(term, "music", "musicTrack", 100);
 
         call.enqueue(new Callback<ITunesResponse>() {
             @Override

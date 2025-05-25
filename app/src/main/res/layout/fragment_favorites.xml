@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tus canciones favoritas"
+        android:text="@string/favorite_songs_title"
         android:textSize="20sp"
         android:gravity="center"
         android:padding="16dp"/>

@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Lista de canciones -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_all_songs"
         android:layout_width="0dp"

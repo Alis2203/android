@@ -1,4 +1,4 @@
-package com.example.ls_itunes;  // Paquete corregido
+package com.example.ls_itunes;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -13,7 +13,7 @@ public class FavoriteSong {
     private String artworkUrl;
     private String previewUrl;
 
-    // Constructor
+
     public FavoriteSong(String trackName, String artistName, String artworkUrl, String previewUrl) {
         this.trackName = trackName;
         this.artistName = artistName;
@@ -21,7 +21,7 @@ public class FavoriteSong {
         this.previewUrl = previewUrl;
     }
 
-    // Getters
+
     public String getTrackName() { return trackName; }
     public String getArtistName() { return artistName; }
     public String getArtworkUrl() { return artworkUrl; }

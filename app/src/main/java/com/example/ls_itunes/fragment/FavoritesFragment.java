@@ -1,4 +1,4 @@
-package com.example.ls_itunes.fragment;  // Paquete corregido
+package com.example.ls_itunes.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -26,12 +26,12 @@ public class FavoritesFragment extends Fragment {
         recyclerView = view.findViewById(R.id.favorites_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Conexión a la base de datos
+
         AppDatabase db = Room.databaseBuilder(
                 requireContext(),
                 AppDatabase.class,
                 "favorites-db"
-        ).allowMainThreadQueries().build();  // ⚠️ Usa corrutinas en producción
+        ).allowMainThreadQueries().build();
 
         List<FavoriteSong> favorites = db.favoriteDao().getAll();
         adapter = new FavoriteAdapter(favorites, requireContext());

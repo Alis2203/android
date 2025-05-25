@@ -20,23 +20,23 @@ public class SongDetailActivity extends AppCompatActivity {
     private AppDatabase db;
     private Song currentSong;
 
-    // Vistas (IDs coinciden con tu XML)
+
     private ImageView imageViewArtwork;
     private TextView textViewTrackName;
     private TextView textViewArtistName;
-    private TextView textViewCollectionName; // Album name (en tu XML es text_album_name)
+    private TextView textViewCollectionName;
     private TextView textViewReleaseDate;
     private TextView textViewTrackPrice;
     private TextView textViewGenre;
 
-    private Button buttonPlayPreview;       // En tu XML es button_play
-    private Button buttonAddFavorite;       // En tu XML es button_add_favorite
+    private Button buttonPlayPreview;
+    private Button buttonAddFavorite;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_song_detail); // Asegúrate de que este es el nombre de tu archivo XML
+        setContentView(R.layout.activity_song_detail);
 
         Log.d(TAG, "onCreate: Iniciando SongDetailActivity");
 
@@ -44,33 +44,29 @@ public class SongDetailActivity extends AppCompatActivity {
         imageViewArtwork = findViewById(R.id.image_artwork);
         textViewTrackName = findViewById(R.id.text_song_name);
         textViewArtistName = findViewById(R.id.text_artist_name);
-        textViewCollectionName = findViewById(R.id.text_album_name); // Corresponde a collectionName en la clase Song
+        textViewCollectionName = findViewById(R.id.text_album_name);
         textViewReleaseDate = findViewById(R.id.text_release_date);
         textViewTrackPrice = findViewById(R.id.text_price);
         textViewGenre = findViewById(R.id.text_genre);
 
-        buttonPlayPreview = findViewById(R.id.button_play); // Corregido según tu XML
+        buttonPlayPreview = findViewById(R.id.button_play);
         buttonAddFavorite = findViewById(R.id.button_add_favorite);
 
-        // Inicializa la base de datos
+
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "favorites-db")
-                .allowMainThreadQueries() // ¡Solo para desarrollo/pruebas!
+                .allowMainThreadQueries()
                 .build();
         Log.d(TAG, "onCreate: Base de datos inicializada.");
 
-        // Intenta obtener la canción del Intent como Parcelable
         if (getIntent().hasExtra("song")) {
             Log.d(TAG, "onCreate: Intent tiene el extra 'song'.");
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 currentSong = getIntent().getParcelableExtra("song", Song.class);
             } else {
-                // Correctly apply SuppressWarnings to the variable declaration or the assignment
-                @SuppressWarnings("DEPRECATION")
+
                 Song songFromExtra = getIntent().getParcelableExtra("song");
                 currentSong = songFromExtra;
-                // Or, more directly if you prefer:
-                // @SuppressWarnings("DEPRECATION")
-                // currentSong = getIntent().getParcelableExtra("song");
+
             }
         } else {
             Log.w(TAG, "onCreate: Intent NO tiene el extra 'song'.");
@@ -124,7 +120,7 @@ public class SongDetailActivity extends AppCompatActivity {
         } else {
             imageViewArtwork.setImageResource(R.drawable.ic_music);
         }
-        // Habilitar o deshabilitar el botón de preview
+
         buttonPlayPreview.setEnabled(currentSong.getPreviewUrl() != null && !currentSong.getPreviewUrl().isEmpty());
     }
 
